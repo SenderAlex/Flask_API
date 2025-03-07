@@ -30,7 +30,22 @@
         <h2>Новости:</h2>
         <ul>
             {% for article in news %}
-            <li><a href="{{ article['url'] }}"> {{ article['title'] }} </a></li>
+            <li><a href="{{article['url']}}"> {{article['title']}} </a></li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+
+    <div class="result text-center">
+        {% if quotes %}
+        <h2>Цитаты великих людей:</h2>
+        <ul>
+            {% for quote in quotes %}
+            <li>
+                <a href="{{quote['url']}}}">
+                    {{quote['quote']}} -- автор {{quote['author']}}, категория {{quote['category']}}
+                </a>
+            </li>
             {% endfor %}
         </ul>
         {% endif %}

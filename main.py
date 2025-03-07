@@ -17,7 +17,10 @@ def get_news():
    return response.json().get('articles', [])
 
 def get_quotes():
-   pass
+   api_key = '2n6k3t/l+cDixm04d1JDZQ==Em46FSMeSW7BTkxV'
+   url = 'https://api.api-ninjas.com/v1/quotes'
+   response = requests.get(url, headers={'X-Api-Key': api_key})
+   return response.json()
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -25,7 +28,7 @@ def index():
    news = []
    quotes = []
    if request.method == 'POST':
-       city = request.form['city'] # этот определенный город мы будем брать для запроса API
+       city = request.form['city']  # этот определенный город мы будем брать для запроса API
        weather = get_weather(city)
        news = get_news()
        quotes = get_quotes()
